@@ -1,0 +1,266 @@
+{
+  "schema": "ricewm.app/v1",
+  "sdk": {
+    "version": "1.0.0"
+  },
+  "id": "dev.herdr.generated.mind-grove",
+  "name": "Mind",
+  "version": "1.0.0",
+  "description": "",
+  "entry": "app.mjs",
+  "icon": null,
+  "iconName": "network",
+  "categories": [
+    "Office"
+  ],
+  "mimeTypes": [],
+  "capabilities": [
+    {
+      "id": "add-topic",
+      "title": "Add topic",
+      "description": "Add a named topic. Omit parentId to use selection; empty string creates a root.",
+      "input": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "maxLength": 1000
+          },
+          "parentId": {
+            "type": "string",
+            "maxLength": 128
+          }
+        },
+        "additionalProperties": false
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "ids": {
+            "type": "array",
+            "maxItems": 128,
+            "items": {
+              "type": "string",
+              "maxLength": 128
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "effect": "mutation",
+      "undoable": true
+    },
+    {
+      "id": "create-hierarchy",
+      "title": "Create hierarchy",
+      "description": "Append up to 128 named topics atomically. IDs must be new; parentId may reference this batch or existing topics. Five layers means root plus four descendant levels. Maximum 32 layers and 1000 total topics.",
+      "input": {
+        "type": "object",
+        "properties": {
+          "topics": {
+            "type": "array",
+            "maxItems": 128,
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "maxLength": 128
+                },
+                "text": {
+                  "type": "string",
+                  "maxLength": 1000
+                },
+                "parentId": {
+                  "type": "string",
+                  "maxLength": 128
+                }
+              },
+              "required": [
+                "id",
+                "text"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "topics"
+        ],
+        "additionalProperties": false
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "ids": {
+            "type": "array",
+            "maxItems": 128,
+            "items": {
+              "type": "string",
+              "maxLength": 128
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "effect": "mutation",
+      "undoable": true
+    },
+    {
+      "id": "remove-topic",
+      "title": "Remove topic subtree",
+      "description": "Remove the specified topic and all descendants, including their connections.",
+      "input": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 128
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "ids": {
+            "type": "array",
+            "maxItems": 1024,
+            "items": {
+              "type": "string",
+              "maxLength": 128
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "effect": "mutation",
+      "undoable": true
+    },
+    {
+      "id": "reparent-topic",
+      "title": "Change topic parent",
+      "description": "Move an existing subtree under parentId, or empty string to make it a root. Rejects missing parents and cycles.",
+      "input": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 128
+          },
+          "parentId": {
+            "type": "string",
+            "maxLength": 128
+          }
+        },
+        "required": [
+          "id",
+          "parentId"
+        ],
+        "additionalProperties": false
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "ids": {
+            "type": "array",
+            "maxItems": 1,
+            "items": {
+              "type": "string",
+              "maxLength": 128
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "effect": "mutation",
+      "undoable": true
+    },
+    {
+      "id": "get-map",
+      "title": "Read topic hierarchy",
+      "description": "Read stable topic IDs, text and parent IDs before editing.",
+      "input": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "topics": {
+            "type": "array",
+            "maxItems": 1000,
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "maxLength": 128
+                },
+                "text": {
+                  "type": "string",
+                  "maxLength": 1000
+                },
+                "parentId": {
+                  "type": "string",
+                  "maxLength": 128
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "effect": "query",
+      "undoable": false
+    }
+  ],
+  "window": {
+    "profile": "default",
+    "width": 1100,
+    "height": 760
+  },
+  "permissions": {
+    "services": [
+      "files.read",
+      "files.write",
+      "files.stat",
+      "files.saveDialog",
+      "files.openDialog",
+      "applications.open",
+      "applications.status",
+      "applications.handlers",
+      "clipboard.readText",
+      "clipboard.writeText",
+      "actions.register",
+      "actions.unregister",
+      "capabilities.register",
+      "capabilities.respond",
+      "capabilities.unregister",
+      "system.capabilities",
+      "assets.read",
+      "assets.stat",
+      "compute.open",
+      "compute.invoke",
+      "compute.cancel",
+      "compute.close"
+    ],
+    "network": {
+      "origins": []
+    },
+    "bus": {
+      "publish": [],
+      "subscribe": [
+        "dev.herdr.generated.mind-grove/capabilities/invoke",
+        "dev.herdr.generated.mind-grove/actions/invoke"
+      ],
+      "provide": [],
+      "call": []
+    }
+  }
+}

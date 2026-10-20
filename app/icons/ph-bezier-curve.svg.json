@@ -1,0 +1,19 @@
+{
+  "provider": "iconify",
+  "key": "iconify:ph:bezier-curve",
+  "origin": "https://api.iconify.design/ph/bezier-curve.svg",
+  "author": {
+    "name": "Phosphor Icons",
+    "url": "https://github.com/phosphor-icons/core"
+  },
+  "license": {
+    "title": "MIT",
+    "spdx": "MIT",
+    "url": "https://github.com/phosphor-icons/core/blob/main/LICENSE"
+  },
+  "licenseNotice": "upstream-file",
+  "sourceSha256": "42c38b33e57bc604d4f783601055a7ff02ea878a1c3221938ed2aadc6431fdbc",
+  "sha256": "7753927412686ab9078f3729b469f26440af570b235632e04290693fb9716443",
+  "path": "icons/ph-bezier-curve.svg",
+  "color": "#303030"
+}

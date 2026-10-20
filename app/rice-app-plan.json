@@ -1,0 +1,44 @@
+{
+  "schema": "ricewm.app-plan/v1",
+  "requirements": [
+    "Mind maps with colors and tags",
+    "Map and outline viewpoints",
+    "Save maps and export SVG and Rice Deck PPTX"
+  ],
+  "windows": [
+    {
+      "id": "main",
+      "purpose": "Editor"
+    }
+  ],
+  "state": [
+    {
+      "id": "map",
+      "scope": "document",
+      "module": "app.mjs",
+      "persistence": "files"
+    }
+  ],
+  "resources": [
+    "presentation"
+  ],
+  "journeys": [
+    {
+      "id": "edit",
+      "title": "Edit and export map",
+      "windows": [
+        "main"
+      ],
+      "steps": [
+        "Add topic",
+        "Edit topic",
+        "Switch viewpoints",
+        "Save map",
+        "Export SVG and PPTX"
+      ],
+      "capabilities": [
+        "add-topic"
+      ]
+    }
+  ]
+}

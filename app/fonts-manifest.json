@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "fonts": [
+    {
+      "path": "fonts/LiberationSans-Regular.ttf",
+      "family": "Liberation Sans",
+      "weight": 400,
+      "style": "normal"
+    },
+    {
+      "path": "fonts/LiberationSans-Bold.ttf",
+      "family": "Liberation Sans",
+      "weight": 700,
+      "style": "normal"
+    },
+    {
+      "path": "fonts/LiberationSans-Italic.ttf",
+      "family": "Liberation Sans",
+      "weight": 400,
+      "style": "italic"
+    },
+    {
+      "path": "fonts/LiberationSans-BoldItalic.ttf",
+      "family": "Liberation Sans",
+      "weight": 700,
+      "style": "italic"
+    },
+    {
+      "path": "fonts/Manrope-Regular.ttf",
+      "family": "Manrope",
+      "weight": 400,
+      "style": "normal"
+    },
+    {
+      "path": "fonts/Manrope-Bold.ttf",
+      "family": "Manrope",
+      "weight": 700,
+      "style": "normal"
+    },
+    {
+      "path": "fonts/arabic.ttf",
+      "family": "Noto Sans Arabic",
+      "weight": 400,
+      "style": "normal"
+    },
+    {
+      "path": "fonts/DejaVuSans.ttf",
+      "family": "DejaVu Sans",
+      "weight": 400,
+      "style": "normal"
+    },
+    {
+      "path": "fonts/DejaVuSans-Bold.ttf",
+      "family": "DejaVu Sans",
+      "weight": 700,
+      "style": "normal"
+    },
+    {
+      "path": "fonts/DejaVuSerif.ttf",
+      "family": "DejaVu Serif",
+      "weight": 400,
+      "style": "normal"
+    },
+    {
+      "path": "fonts/DejaVuSerif-Bold.ttf",
+      "family": "DejaVu Serif",
+      "weight": 700,
+      "style": "normal"
+    }
+  ]
+}
